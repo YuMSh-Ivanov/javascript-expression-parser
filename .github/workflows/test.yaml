@@ -1,0 +1,21 @@
+name: JavaScript CI
+
+on:
+  push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup jest
+        run: npm install --save-dev jest
+
+      - name: Test solution
+        run: npm test
